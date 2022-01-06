@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkDiaryV2.AddEntry"
+             Title="Add Entry">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Workplace Details">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="Place of Work: " VerticalOptions="Center" />
+                                <Entry Text="Webbery Estate"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="Date: " VerticalOptions="Center"/>
+                                <DatePicker VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Source={x:Reference sliderHours}, Path=Value, StringFormat='{0:N1}' }"
+                                       VerticalOptions="Center"
+                                       />
+                                <Slider x:Name="sliderHours" 
+                                        Minimum="0.5" 
+                                        Maximum="12" 
+                                        HorizontalOptions="FillAndExpand"
+                                        
+                                        />
+                                
+                            </StackLayout>
+                            
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Tasks completed">
+                        <EntryCell Placeholder ="Add task here" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

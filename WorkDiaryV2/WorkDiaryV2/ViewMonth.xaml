@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+    
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkDiaryV2.ViewMonth"
+             Title="View Month">
+
+    <ContentPage.Content>
+        <StackLayout >
+
+            <Grid MinimumHeightRequest="75" Padding="3">
+                <Label Grid.Column="0" Text="Place" VerticalOptions="Center" FontSize="Small"/>
+                <Label Grid.Column="1" Text="Date" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small"/>
+                <Label Grid.Column="2" Text="Hours" HorizontalOptions="End" VerticalOptions="Center" FontSize="Small"/>
+            </Grid>
+
+            <CollectionView x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid BackgroundColor="LightGray" Margin="3">
+                                <Grid.ColumnDefinitions>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Place}" VerticalOptions="Center" Padding="0"/>
+                                <Label Grid.Column="1" Text="{Binding Date, StringFormat='\{0:d}'}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Grid.Column="2" Text="{Binding Hours}" HorizontalOptions="End" VerticalOptions="Center" Padding="5"/>
+                            </Grid>
+                        </StackLayout>
+
+
+
+
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Delete all" Clicked="Button_Clicked"/>
+            <Button Text="Test Entry" Clicked="Add_Entry"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
