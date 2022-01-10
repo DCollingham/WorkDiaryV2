@@ -19,12 +19,26 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Entry_Tapped"/>
+                            </StackLayout.GestureRecognizers>
                             <Grid BackgroundColor="LightGray" Margin="3">
                                 <Grid.ColumnDefinitions>
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="{Binding Place}" VerticalOptions="Center" Padding="0"/>
                                 <Label Grid.Column="1" Text="{Binding Date, StringFormat='\{0:d}'}" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Grid.Column="2" Text="{Binding Hours}" HorizontalOptions="End" VerticalOptions="Center" Padding="5"/>
+                                <Label Grid.Column="2" Text="{Binding Hours}" HorizontalOptions="End" VerticalOptions="Center" />
+
+                                <Label Grid.Row="1" Grid.ColumnSpan="3" Padding="0" FontSize="Micro" VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <MultiBinding StringFormat="{}Tasks: {0} {1} {2} {3}">
+                                            <Binding Path="MyTask1"/>
+                                            <Binding Path="MyTask2"/>
+                                            <Binding Path="MyTask3"/>
+                                            <Binding Path="MyTask4"/>
+                                    </MultiBinding>
+                                    </Label.FormattedText>
+                                </Label>
                             </Grid>
                         </StackLayout>
 
@@ -37,7 +51,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Text="Delete all" Clicked="Button_Clicked"/>
+            <Button Text="Delete all" Clicked="Delete_All"/>
             <Button Text="Test Entry" Clicked="Add_Entry"></Button>
         </StackLayout>
     </ContentPage.Content>

@@ -5,42 +5,80 @@
              Title="Add Entry">
     <ContentPage.Content>
         <StackLayout>
-            <TableView>
+            <TableView Margin="5">
                 <TableRoot>
                     <TableSection Title="Workplace Details">
+                        
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Label Text="Place of Work: " VerticalOptions="Center" />
-                                <Entry Text="Webbery Estate"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Place of Work: " 
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Entry Text="Webbery Estate"
+                                       x:Name="placeOfWork"
+                                       HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </ViewCell>
+                        
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Label Text="Date: " VerticalOptions="Center"/>
-                                <DatePicker VerticalOptions="Center"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Date: "
+                                       
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="StartAndExpand"/>
+                                <DatePicker VerticalOptions="Center"
+                                            HorizontalOptions="EndAndExpand"
+                                            x:Name="dateWorked"/>
                             </StackLayout>
                         </ViewCell>
+                        
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Overtime: "
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Switch x:Name="switchOvertime"
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                        
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Hours Worked: "
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="StartAndExpand"/>
                                 <Label Text="{Binding Source={x:Reference sliderHours}, Path=Value, StringFormat='{0:N1}' }"
                                        VerticalOptions="Center"
-                                       />
-                                <Slider x:Name="sliderHours" 
+                                       TextColor="Black"
+                                       FontSize="Medium"
+                                       HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <Slider x:Name="sliderHours" 
                                         Minimum="0.5" 
                                         Maximum="12" 
-                                        HorizontalOptions="FillAndExpand"
-                                        
-                                        />
-                                
-                            </StackLayout>
-                            
+                                        HorizontalOptions="FillAndExpand"/>
                         </ViewCell>
                     </TableSection>
-                    <TableSection Title="Tasks completed">
-                        <EntryCell Placeholder ="Add task here" />
+                    <TableSection Title="Tasks completed" >
+                        <EntryCell x:Name="entryCellAdd"
+                                   Placeholder ="Add task here" 
+                                   Completed="AddTask_Completed" 
+                                   />
+                        <ViewCell >
+                            <StackLayout x:Name="tasksCompleted">
+
+                            </StackLayout>
+                        </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>
+            <Button x:Name="submitButton"
+                    Text="Submit"
+                    Clicked="SubmitButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

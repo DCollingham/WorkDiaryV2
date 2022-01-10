@@ -14,6 +14,7 @@ namespace WorkDiaryV2
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<DiaryEntry>().Wait();
+            _database.CreateTableAsync<DiaryTaskList>().Wait();
         }
 
         public Task<List<DiaryEntry>> GetEntryAsync()
@@ -31,6 +32,12 @@ namespace WorkDiaryV2
         {
             await _database.DeleteAllAsync<DiaryEntry>();
         }
+
+        public Task<DiaryEntry> GetEntryRow(int id)
+        {
+            return _database.GetAsync<DiaryEntry>(id);
+        }
+
 
     }
 }

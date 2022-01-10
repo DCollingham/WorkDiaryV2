@@ -34,10 +34,16 @@ namespace WorkDiaryV2
             collectionView.ItemsSource = await App.Database.GetEntryAsync();
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void Delete_All(object sender, EventArgs e)
         {
             await App.Database.DeleteEntryAsync();
             collectionView.ItemsSource = await App.Database.GetEntryAsync();
+
+        }
+
+        private void Entry_Tapped(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("test");
         }
     }
 }
