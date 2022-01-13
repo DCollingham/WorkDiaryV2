@@ -13,6 +13,7 @@ namespace WorkDiaryV2
         public MainPage()
         {
             InitializeComponent();
+
         }
 
         private  void ViewClicked(object sender, EventArgs e)

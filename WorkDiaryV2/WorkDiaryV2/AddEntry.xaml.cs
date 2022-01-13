@@ -38,22 +38,45 @@ namespace WorkDiaryV2
 
         private async void SubmitButton_Clicked(object sender, EventArgs e)
         {
-            //Saves object to database
-            await App.Database.SaveEntryAsync(new DiaryEntry
+            //Create DiaryEntry Object
+            DiaryEntry entry = new DiaryEntry()
             {
                 Place = placeOfWork.Text,
                 Date = dateWorked.Date,
                 Overtime = switchOvertime.IsToggled,
                 Hours = sliderHours.Value,
-                MyTask1 = taskList[0],
-                MyTask2 = taskList[1],
-                MyTask3 = taskList[2],
-                MyTask4 = taskList[3]
-            });
-            System.Diagnostics.Debug.WriteLine(taskList[0]);
-            System.Diagnostics.Debug.WriteLine(taskList[1]);
+            };
 
+            //Save object to database
+            _ = await App.Database.SaveEntryAsync(entry);
+            System.Diagnostics.Debug.WriteLine($"Entry Id: {entry.Id}");
+            int taskId = entry.Id;
+
+
+
+            foreach(var task in taskList)
+            {
+                DiaryTaskList diaryTaskList = new DiaryTaskList()
+                {
+                    TaskId = taskId,
+                    TaskDetail = task
+
+                };
+                _ = await App.Database.SaveEntryAsync(diaryTaskList);
+                System.Diagnostics.Debug.WriteLine($"diaryTaskList Id: {diaryTaskList.Id}");
+            }
+
+            resetPage();
+
+            
         }
-        
+
+        private void resetPage()
+        {
+            taskList.Clear();
+            tasksCompleted.Children.Clear();
+            System.Diagnostics.Debug.WriteLine("UI Cleared");
+        }
+
     }
 }

@@ -14,7 +14,8 @@ namespace WorkDiaryV2
             {
                 if (database == null)
                 {
-                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "workdiary.db3"));
+                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "workdiary5.db3"));
+                    System.Diagnostics.Debug.WriteLine("Database Created");
                 }
                 return database;
             }

@@ -5,11 +5,11 @@ using SQLite;
 
 namespace WorkDiaryV2
 {
-    class DiaryTaskList
+    public class DiaryTaskList
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int taskId { get; set; }
+        public int TaskId { get; set; }
         public string TaskDetail { get; set; }
     }
 }
