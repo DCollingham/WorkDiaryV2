@@ -10,78 +10,79 @@
                 
             <Style x:Key="gridStyle" TargetType="Grid" >
                 <Setter Property="BackgroundColor"
-                           Value="LightGray"/>
+                           Value="LightBlue"/>
             </Style>
 
 
             <Style x:Key="lablePlace" TargetType="Label">
                 <Setter Property="HorizontalOptions"
                         Value="FillAndExpand" />
-                <Setter Property="TextColor"
-                        Value="Red"/>
                 <Setter Property="Grid.Column"
                         Value="0"/>
-
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center"/>
             </Style>
 
             <Style x:Key="lableDate" TargetType="Label">
                 <Setter Property="HorizontalOptions"
-                        Value="FillAndExpand" />
-                <Setter Property="TextColor"
-                        Value="Red"/>
+                        Value="CenterAndExpand" />
                 <Setter Property="Grid.Column"
                         Value="1"/>
+
             </Style>
 
             <Style x:Key="lableHours" TargetType="Label">
                 <Setter Property="HorizontalOptions"
-                        Value="FillAndExpand" />
-                <Setter Property="TextColor"
-                        Value="Red"/>
+                        Value="CenterAndExpand" />
                 <Setter Property="Grid.Column"
                         Value="2"/>
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center"/>
             </Style>
 
+            <Style x:Key="labelTasks" TargetType="Label">
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="Grid.Row"
+                        Value="1"/>
+                <Setter Property="FontSize"
+                        Value="Micro"/>
+                <Setter Property="VerticalOptions"
+                        Value="Center"/>
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center"/>
 
-
-
-
+            </Style>
 
 
         </ResourceDictionary>
         </ContentPage.Resources>
     <ContentPage.Content>
-        
-        
-        
-        <StackLayout x:Name="MainContent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label Text="Webbery"/>
-                <Label Text="4"/>
-                <Label Text="Date"/>
-            </StackLayout>
 
 
-            <Grid>
-                <Label Grid.Column="0" Text="Place" VerticalOptions="Center" FontSize="Small"/>
-                <Label Grid.Column="1" Text="Date" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small"/>
-                <Label Grid.Column="2" Text="Hours" HorizontalOptions="End" VerticalOptions="Center" FontSize="Small"/>
-            </Grid>
+        <StackLayout>
+            <StackLayout x:Name="MainContent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5">
+
+
+                <Grid>
+                    <Label Grid.Column="0" Text="Place" VerticalOptions="Center" FontSize="Small" Padding="3" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Column="1" Text="Date" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small" Padding="3" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Text="Hours" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small" Padding="3" HorizontalTextAlignment="Center"/>
+                </Grid>
 
 
 
 
 
 
-            <Button Text="Test Join" Clicked="Button_Clicked_1"/>
-            <Button Text="Test" Clicked="Button_Clicked"/>
-            <Button Text="Delete all" Clicked="Delete_All"/>
+
 
 
         </StackLayout>
-
-        
+            <Button Text="Delete all" Clicked="Delete_All"/>
+        </StackLayout>
 
 
 

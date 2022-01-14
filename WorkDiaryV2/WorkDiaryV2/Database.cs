@@ -18,8 +18,6 @@ namespace WorkDiaryV2
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<DiaryEntry>().Wait();
             _database.CreateTableAsync<DiaryTaskList>().Wait();
-
-
         }
 
 

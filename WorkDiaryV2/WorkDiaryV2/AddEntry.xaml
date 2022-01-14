@@ -63,13 +63,13 @@
                                         HorizontalOptions="FillAndExpand"/>
                         </ViewCell>
                     </TableSection>
-                    <TableSection Title="Tasks completed" >
+                    <TableSection Title="Tasks completed">
                         <EntryCell x:Name="entryCellAdd"
                                    Placeholder ="Add task here" 
                                    Completed="AddTask_Completed" 
                                    />
-                        <ViewCell >
-                            <StackLayout x:Name="tasksCompleted">
+                        <ViewCell>
+                            <StackLayout x:Name="tasksCompleted" BackgroundColor="Aqua" Orientation="Vertical" VerticalOptions="FillAndExpand">
 
                             </StackLayout>
                         </ViewCell>

@@ -53,7 +53,7 @@ namespace WorkDiaryV2
             int taskId = entry.Id;
 
 
-
+            //Save tasks to database
             foreach(var task in taskList)
             {
                 DiaryTaskList diaryTaskList = new DiaryTaskList()
@@ -65,10 +65,7 @@ namespace WorkDiaryV2
                 _ = await App.Database.SaveEntryAsync(diaryTaskList);
                 System.Diagnostics.Debug.WriteLine($"diaryTaskList Id: {diaryTaskList.Id}");
             }
-
-            ResetPage();
-
-            
+            ResetPage(); 
         }
 
         private void ResetPage()

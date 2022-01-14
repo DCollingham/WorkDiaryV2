@@ -9,7 +9,6 @@
         </Frame>
         <Button Text="Add Entry" Clicked="AddEntryClicked"/>
         <Button Text="View Month" Clicked="ViewClicked"/>
-        <Button Text="Delete Entry"/>
     </StackLayout>
 
 </ContentPage>

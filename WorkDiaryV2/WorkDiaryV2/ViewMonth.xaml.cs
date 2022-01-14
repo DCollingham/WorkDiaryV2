@@ -17,58 +17,62 @@ namespace WorkDiaryV2
             InitializeComponent();
 
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //collectionView.ItemsSource = await App.Database.GetEntryAsync();
+            var joinedResults = await App.Database.GetAllTest();
+            BuildLabel(joinedResults);
         }
 
 
         private async void Delete_All(object sender, EventArgs e)
         {
             await App.Database.DeleteAllAsync();
-            //collectionView.ItemsSource = await App.Database.GetEntryAsync();
 
         }
 
-        private void Entry_Tapped(object sender, EventArgs e)
+        private void BuildLabel( IEnumerable<dynamic> joinedResults)
         {
-            System.Diagnostics.Debug.WriteLine("test");
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            var DiaryEntryTable = await App.Database.GetEntryAsync();
-            BuildLabel(DiaryEntryTable);
-
-        }
-
-        private async void BuildLabel( List<DiaryEntry> DiaryEntryTable)
-        {
-            foreach(DiaryEntry entry in DiaryEntryTable)
+            
+            foreach(var item in joinedResults)
             {
-                Grid grid = new Grid();
+                int columnCounter = 0;
+                int rowCounter = 1;
+
+                Grid dayContainer = new Grid();
                 Label labelPlace = new Label();
                 Label labelHours = new Label();
                 Label LabelDate = new Label();
 
-                grid.Style = (Style)Resources["gridStyle"];
+                dayContainer.Style = (Style)Resources["gridStyle"];
                 labelPlace.Style = (Style)Resources["lablePlace"];
                 labelHours.Style = (Style)Resources["lableHours"];
                 LabelDate.Style = (Style)Resources["lableDate"];
-                
-                labelPlace.Text = entry.Place;
-                labelHours.Text = entry.Hours.ToString();
-                LabelDate.Text = entry.Date.ToShortDateString();
 
-                grid.Children.Add(labelPlace);
-                grid.Children.Add(labelHours);
-                grid.Children.Add(LabelDate);
+                labelPlace.Text = Convert.ToString(item.Place);
+                labelHours.Text = Convert.ToString(item.Hours);
+                LabelDate.Text = Convert.ToString(item.Date.ToShortDateString());
 
-                MainContent.Children.Add(grid);
+                dayContainer.Children.Add(labelPlace);
+                dayContainer.Children.Add(labelHours);
+                dayContainer.Children.Add(LabelDate);
 
-                var x = await App.Database.GetMatchingTasks(entry.Id);
-                //System.Diagnostics.Debug.WriteLine(x[0].TaskDetail);
+
+                foreach (var task in item.dayTasks)
+                {
+                    Label LabelTasks = new Label();
+                    LabelTasks.Style = (Style)Resources["labelTasks"];
+                    string taskDetail = Convert.ToString(task.TaskDetail);
+                    LabelTasks.Text = taskDetail;
+                    dayContainer.Children.Add(LabelTasks, columnCounter, rowCounter);
+                    columnCounter++;
+                    if(columnCounter == 3)
+                    {
+                        columnCounter = 0;
+                        rowCounter++;
+                    }
+                }
+                MainContent.Children.Add(dayContainer);
             }
 
         }
