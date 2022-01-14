@@ -66,12 +66,12 @@ namespace WorkDiaryV2
                 System.Diagnostics.Debug.WriteLine($"diaryTaskList Id: {diaryTaskList.Id}");
             }
 
-            resetPage();
+            ResetPage();
 
             
         }
 
-        private void resetPage()
+        private void ResetPage()
         {
             taskList.Clear();
             tasksCompleted.Children.Clear();
